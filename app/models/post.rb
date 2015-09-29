@@ -10,7 +10,7 @@ class Post < ActiveRecord::Base
     validates :slug, uniqueness: {message: "The slug must be unique"}
 
     # Callbacks
-    before_validation :slug_truncate
+    before_validation :slug_format
     after_save :slug_blank
 
     def self.seed(number)
@@ -24,8 +24,8 @@ class Post < ActiveRecord::Base
         end
     end
 
-    def slug_truncate
-        self.slug = self.slug[0..49]
+    def slug_format
+        self.slug = self.slug.parameterize.first(50)
     end
 
     # Automatically create a slug if blank
