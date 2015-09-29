@@ -1,5 +1,10 @@
 source 'https://rubygems.org'
 
+# Non-default Gems
+# ----------------
+
+gem 'aws-sdk', '~> 2'
+
 # DEFAULT GEMS
 # ------------
 
