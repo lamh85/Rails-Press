@@ -1,7 +1,15 @@
 class Post < ActiveRecord::Base
 
+    # Relations
     has_many :comments
     belongs_to :user
+
+    # Validations
+    validates :title, presence: {message: "Title cannot be blank"}
+    validates :content, presence: {message: "Content cannot be blank"}
+    validates :slug, uniqueness: {message: "The slug must be unique"}
+
+    # Callbacks
     after_save :auto_create_slug
 
     def self.seed(number)
