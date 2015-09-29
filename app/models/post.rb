@@ -10,7 +10,7 @@ class Post < ActiveRecord::Base
     validates :slug, uniqueness: {message: "The slug must be unique"}
 
     # Callbacks
-    after_save :auto_create_slug
+    after_save :slug_blank
 
     def self.seed(number)
         number.times do |x|
@@ -24,10 +24,17 @@ class Post < ActiveRecord::Base
     end
 
     # Automatically create a slug if blank
-    def auto_create_slug
+    def slug_blank
         if self.slug == nil || self.slug.gsub(" ","") == ""
             self.slug = self.title.parameterize.first(50)
             self.save
+        end
+    end
+
+    # If slug is not unique, then add a number
+    def slug_duplicate
+        if self.errors[:slug] != nil
+            counter = 1
         end
     end
 end
