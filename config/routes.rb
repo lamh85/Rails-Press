@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
     namespace :admin do
-        root "admin/pages#root"
+        root "pages#root" # the URI is /admin/
         resources :pages, :posts, :users
         resources :comments, only: [:new, :create]
     end
