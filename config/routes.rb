@@ -5,7 +5,11 @@ Rails.application.routes.draw do
         resources :comments, only: [:new, :create]
     end
 
-    resources :posts, :users
+    namespace :api do
+        resources :posts
+    end
+
+    resources :pages, :posts, :users
     resources :comments, only: [:new, :create]
 
   # The priority is based upon order of creation: first created -> highest priority.
