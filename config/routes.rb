@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
 
     namespace :admin do
+        root "admin/pages#root"
         resources :pages, :posts, :users
         resources :comments, only: [:new, :create]
     end
+
+    root 'pages#root'
 
     namespace :api do
         resources :posts
