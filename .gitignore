@@ -13,4 +13,4 @@
 /tmp
 
 # Ignore secret variables
-/config/secrets.yml
+/config/initializers/keys.rb
