@@ -5,6 +5,8 @@ source 'https://rubygems.org'
 
 gem 'aws-sdk', '~> 2'
 gem 'rmagick'
+gem 'paperclip'
+gem 's3_direct_upload'
 
 # DEFAULT GEMS
 # ------------
