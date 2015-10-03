@@ -41,5 +41,5 @@ class Page < ActiveRecord::Base
             counter = 1
         end
     end
-
+    
 end
