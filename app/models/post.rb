@@ -4,8 +4,6 @@ class Post < ActiveRecord::Base
     has_many :comments
     belongs_to :user
 
-    include PageModule
-
     def seed(number)
         number.times do |x|
             post = Post.new
@@ -16,4 +14,5 @@ class Post < ActiveRecord::Base
             post.save
         end
     end
+
 end

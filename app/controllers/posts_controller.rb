@@ -22,7 +22,7 @@ class PostsController < ApplicationController
     private
 
     def post_params
-        params.require(:post).permit()
+        params.require(:post).permit(*Post.attrs_array)
     end
 
 end
