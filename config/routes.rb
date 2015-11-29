@@ -6,7 +6,7 @@ Rails.application.routes.draw do
         resources :comments, only: [:new, :create]
     end
 
-    root 'pages#root'
+    root 'posts#new'
 
     namespace :api do
         resources :posts
