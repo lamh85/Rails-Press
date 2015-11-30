@@ -1,1 +1,21 @@
-The token is <%= form_authenticity_token %>.
+<h1>Written in HTML code</h1>
+
+<form action="/posts" method="POST">
+
+    <%= token_tag nil %>
+    <label>Title</label>
+    <input name="title">
+    <label>Content</label>
+    <input name="content">
+
+    <input type="submit">
+
+</form>
+
+<h1>Written in ERB</h1>
+
+<%= form_for @post, url: {action: "create"} do |f| %>
+    <%= f.text_field :title %>
+    <%= f.text_area :content %>
+    <%= f.submit "Post this article!" %>
+<% end %>

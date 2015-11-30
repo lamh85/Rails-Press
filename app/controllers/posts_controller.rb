@@ -9,8 +9,9 @@ class PostsController < ApplicationController
     end
 
     def create
+        byebug
         post = Post.new(post_params)
-        if post.slug.strip == (false || "" || nil)
+        if post.slug && post.slug.strip == (false || "" || nil)
             post.slug = post.title.parameterize.first(50)
         end
     end
