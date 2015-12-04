@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Railspress</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+    <title>Railspress</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
 </head>
 <body>
 
 <%= yield %>
 
 </body>
+
+<% if @extra_scripts %>
+    <% @extra_scripts.each do |script_name| %>
+        <%= javascript_include_tag script_name, 'data-turbolinks-track' => true %>
+    <% end %>
+<% end %>
+
 </html>
