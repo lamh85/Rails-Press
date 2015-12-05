@@ -5,6 +5,7 @@ class PostsController < ApplicationController
 
     def new
         @post = Post.new
+        @extra_scripts = ["post_new"]
         render "new"
     end
 

@@ -1,3 +1,6 @@
+<div ng-app="postNewApp">
+<div ng-controller="formController">
+
 <h1>Written in HTML code</h1>
 
 <form action="/posts" method="POST">
@@ -7,6 +10,12 @@
     <input name="post[title]">
     <label>Content</label>
     <input name="post[content]">
+
+    <!-- 
+    label
+    input name
+    input type
+     -->
 
     <input type="submit">
 
@@ -19,3 +28,7 @@
     <%= f.text_area :content %>
     <%= f.submit "Post this article!" %>
 <% end %>
+
+<!-- Close ng-app and ng-controller -->
+</div>
+</div>
