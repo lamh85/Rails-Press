@@ -1,3 +1,5 @@
 class Page < ActiveRecord::Base
-    include PageModule
+    # title_tag
+    # meta_description
+    # hero_image
 end
