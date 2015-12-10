@@ -3,6 +3,7 @@ class Post < ActiveRecord::Base
     # Relations
     has_many :comments
     belongs_to :user
+    belongs_to :page
 
     def seed(number)
         number.times do |x|

@@ -1,2 +1,3 @@
 class CssFile < CodeFile
+
 end
