@@ -1,0 +1,2 @@
+class JsFile < CodeFile
+end 
