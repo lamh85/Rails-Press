@@ -5,6 +5,14 @@ class Page < ActiveRecord::Base
 
     validates :heading, presence: {message: "The webpage heading cannot be blank."}
 
+    def validate(record)
+        if record.slug.nothing? && record.header.nothing?
+            record.errors[:slug] << 'The slug and page header cannot both be blank'
+        elsif record.slug.nothing? && !record.header.nothing?
+            record.slug = record.header
+        end
+    end
+
     # Relations
     # ---------
 
