@@ -4,6 +4,8 @@ class Page < ActiveRecord::Base
     # -----------
 
     validates :heading, presence: {message: "The webpage heading cannot be blank."}
+    validates :slug, uniqueness: {message: "The slug must be unique"}
+    validates :title, presence: {message: "Title cannot be blank"}
 
     def validate(record)
         if record.slug.nothing? && record.header.nothing?
