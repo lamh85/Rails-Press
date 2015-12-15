@@ -5,13 +5,14 @@ class Page < ActiveRecord::Base
 
     validates :heading, presence: {message: "The webpage heading cannot be blank."}
     validates :slug, uniqueness: {message: "The slug must be unique"}
+    validate :no_backup_slug
 
-    def validate(record)
+    def no_backup_slug
         puts "running"
-        if record.slug.nothing? && record.header.nothing?
-            record.errors[:slug] << 'The slug and page header cannot both be blank'
-        elsif record.slug.nothing? && !record.header.nothing?
-            record.slug = record.header
+        if self.slug.nothing? && self.heading.nothing?
+            self.errors[:slug] << 'The slug and page heading cannot both be blank'
+        elsif self.slug.nothing? && !self.heading.nothing?
+            self.slug = self.heading
         end
     end
 
