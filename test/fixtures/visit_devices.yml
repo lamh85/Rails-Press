@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  browser_brand: MyString
+  browser_version: MyString
+  mobility: MyString
+
+two:
+  browser_brand: MyString
+  browser_version: MyString
+  mobility: MyString
