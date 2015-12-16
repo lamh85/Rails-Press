@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151209042442) do
+ActiveRecord::Schema.define(version: 20151216003115) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,9 +51,6 @@ ActiveRecord::Schema.define(version: 20151209042442) do
   add_index "pages", ["user_id"], name: "index_pages_on_user_id", using: :btree
 
   create_table "posts", force: :cascade do |t|
-    t.string   "title"
-    t.text     "content"
-    t.string   "hero_image"
     t.string   "slug"
     t.integer  "user_id"
     t.text     "excerpt"

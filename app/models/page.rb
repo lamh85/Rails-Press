@@ -23,3 +23,5 @@ class Page < ActiveRecord::Base
     has_one :tag
     has_many :code_files
 end
+
+# title, content, hero_image
