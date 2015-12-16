@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ip_address: MyString
+  event: MyString
+  time: 2015-12-15 22:44:12
+  uri: MyString
+
+two:
+  ip_address: MyString
+  event: MyString
+  time: 2015-12-15 22:44:12
+  uri: MyString
