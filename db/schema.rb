@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151217011655) do
+ActiveRecord::Schema.define(version: 20151219024519) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,7 +40,6 @@ ActiveRecord::Schema.define(version: 20151217011655) do
     t.string   "heading"
     t.text     "content"
     t.string   "slug"
-    t.integer  "user_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.string   "title_tag"
@@ -48,10 +47,7 @@ ActiveRecord::Schema.define(version: 20151217011655) do
     t.integer  "hero_image"
   end
 
-  add_index "pages", ["user_id"], name: "index_pages_on_user_id", using: :btree
-
   create_table "posts", force: :cascade do |t|
-    t.string   "slug"
     t.integer  "user_id"
     t.text     "excerpt"
     t.datetime "created_at"
@@ -95,5 +91,4 @@ ActiveRecord::Schema.define(version: 20151217011655) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "pages", "users"
 end

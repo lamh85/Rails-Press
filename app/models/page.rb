@@ -24,5 +24,3 @@ class Page < ActiveRecord::Base
     has_many :code_files
     has_many :visits
 end
-
-# title, content, hero_image
