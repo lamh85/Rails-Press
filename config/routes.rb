@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
 
+    # These are outside of :admin namespace so that regular users could CRUD.
     get '/register' => 'users#new'
     post '/users' => 'users#create'
 
     namespace :admin do
         root "pages#root" # the URI is /admin/
-        resources :pages, :posts, :users
+        resources :pages, :posts
         resources :comments, only: [:new, :create]
     end
 
