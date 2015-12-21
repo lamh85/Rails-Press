@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+    get '/register' => 'users#new'
+    post '/users' => 'users#create'
+
     namespace :admin do
         root "pages#root" # the URI is /admin/
         resources :pages, :posts, :users
