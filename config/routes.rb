@@ -4,6 +4,10 @@ Rails.application.routes.draw do
     get '/register' => 'users#new'
     post '/users' => 'users#create'
 
+    get '/login' => 'sessions#new'
+    post '/login' => 'sessions#create'
+    get '/logout' => 'sessions#destroy'
+
     namespace :admin do
         root "pages#root" # the URI is /admin/
         resources :pages, :posts
