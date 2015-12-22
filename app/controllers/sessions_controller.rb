@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
             session[:user_id] = user.id
             render text: 'Successfully logged in!'
         else
-            redirect_to '/login'
+            redirect_to '/'
         end
     end
 

@@ -10,6 +10,15 @@
 </head>
 <body>
 
+<p>
+    <% if current_user %>
+        You are currently logged in as <%= current_user.email %>
+    <% else %>
+        You are current not logged in.
+    <% end %>
+    <hr>
+</p>
+
 <%= yield %>
 
 </body>
