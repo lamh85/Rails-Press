@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     post '/login' => 'sessions#create'
     get '/logout' => 'sessions#destroy'
 
+    get '/:slug' => 'pages#show'
+
     namespace :admin do
         root "pages#root" # the URI is /admin/
         resources :pages, :posts

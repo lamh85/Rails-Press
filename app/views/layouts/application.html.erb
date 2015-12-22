@@ -10,16 +10,13 @@
 </head>
 <body>
 
-<p>
-    <% if current_user %>
-        You are currently logged in as <%= current_user.email %>
-    <% else %>
-        You are current not logged in.
-    <% end %>
-    <hr>
-</p>
+    <p>
+        <%= current_user && "You are currently logged in as #{current_user.email}"%>
+        <%= !current_user && "You are current not logged in." %>
+        <hr>
+    </p>
 
-<%= yield %>
+    <%= yield %>
 
 </body>
 
