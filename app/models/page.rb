@@ -5,7 +5,7 @@ class Page < ActiveRecord::Base
 
     validates :heading, presence: {message: "The webpage heading cannot be blank."}
     validates :slug, uniqueness: {message: "The slug must be unique"}
-    validate :no_backup_slug
+    validate :no_backup_slug, :reserved_slug
 
     def no_backup_slug
         puts "running"
@@ -14,6 +14,17 @@ class Page < ActiveRecord::Base
         elsif self.slug.nothing? && !self.heading.nothing?
             self.slug = self.heading
         end
+    end
+
+    def compare_reserved_slug(slug_value)
+        db_tables.each { |table_name|
+            table_name == slug_value && self.errors[:slug] << "The slug \"#{slug_value}\" is not allowed"
+        }
+    end
+
+    def reserved_slug
+        !self.slug.nothing? && compare_reserved_slug(self.slug)
+        self.slug.nothing? && !self.heading.nothing? && compare_reserved_slug(self.heading)
     end
 
     # Relations
