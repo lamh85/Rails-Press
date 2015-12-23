@@ -8,23 +8,19 @@ class Page < ActiveRecord::Base
     validate :no_backup_slug, :reserved_slug
 
     def no_backup_slug
-        puts "running"
-        if self.slug.nothing? && self.heading.nothing?
-            self.errors[:slug] << 'The slug and page heading cannot both be blank'
-        elsif self.slug.nothing? && !self.heading.nothing?
-            self.slug = self.heading
-        end
+        self.errors[:slug] << 'The slug and page heading cannot both be blank' if self.slug.nothing? && self.heading.nothing?
+        self.slug = self.heading if self.slug.nothing? && !self.heading.nothing?
     end
 
     def compare_reserved_slug(slug_value)
         db_tables.each { |table_name|
-            table_name == slug_value && self.errors[:slug] << "The slug \"#{slug_value}\" is not allowed"
+            self.errors[:slug] << "The slug \"#{slug_value}\" is not allowed" if table_name == slug_value
         }
     end
 
     def reserved_slug
-        !self.slug.nothing? && compare_reserved_slug(self.slug)
-        self.slug.nothing? && !self.heading.nothing? && compare_reserved_slug(self.heading)
+        compare_reserved_slug(self.slug)    if !self.slug.nothing?
+        compare_reserved_slug(self.heading) if self.slug.nothing? && !self.heading.nothing?
     end
 
     # Relations
