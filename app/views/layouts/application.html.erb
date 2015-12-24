@@ -5,22 +5,35 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.2/ace.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
 
     <%= csrf_meta_tags %>
 </head>
 <body>
 
-    <p>
-        <%= current_user && "You are currently logged in as #{current_user.email}"%>
-        <%= !current_user && "You are current not logged in." %>
+    <div>
+        <% links_array = [
+            ['All Blog Posts', admin_posts_path],
+            ['Webpages', admin_pages_path],
+            ['Analytics', '/placeholder'],
+            ['Sign Out', '/logout']
+            ] %>
+        <% links_array.each_with_index do |element, index| %>
+            <%= link_to element[0], element[1] %>
+            <%= "|" if index + 1 < links_array.length %>
+        <% end %>
+    </div>
+
+    <div>
+        <%= "You are currently logged in as #{current_user.email}"  if current_user%>
+        <%= "You are current not logged in."                        if !current_user%>
         <hr>
-    </p>
+    </div>
 
     <%= yield %>
 
 </body>
 
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
 <% @extra_scripts.each { |script_name| %>
     <%= javascript_include_tag script_name, 'data-turbolinks-track' => true %>
 <% } if @extra_scripts %>

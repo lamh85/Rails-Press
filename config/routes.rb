@@ -8,7 +8,6 @@ Rails.application.routes.draw do
     post '/login' => 'sessions#create'
     get '/logout' => 'sessions#destroy'
 
-    get '/:slug' => 'pages#show'
 
     namespace :admin do
         root "pages#root" # the URI is /admin/
@@ -25,6 +24,8 @@ Rails.application.routes.draw do
     resources :pages, :posts, :users
     resources :comments, only: [:new, :create]
 
+    get '/:slug' => 'pages#show'
+    
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
