@@ -13,7 +13,7 @@ class Page < ActiveRecord::Base
     end
 
     def compare_reserved_slug(slug_value)
-        db_tables.each { |table_name|
+        invalid_slugs.each { |table_name|
             if table_name == slug_value
                 self.errors[:slug] << "The slug \"#{slug_value}\" is not allowed" 
                 break

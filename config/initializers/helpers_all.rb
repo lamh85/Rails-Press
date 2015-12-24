@@ -4,7 +4,9 @@ class Object
         return false
     end
 
-    def db_tables
-        ActiveRecord::Base.connection.tables.map { |element| element.to_s }
+    def invalid_slugs
+        db_tables = ActiveRecord::Base.connection.tables.map { |element| element.to_s }
+        controllers = Dir[Rails.root.join('app/controllers/*_controller.rb')].map { |path| (path.match(/(\w+)_controller.rb/); $1) }
+        db_tables + controllers
     end
 end
